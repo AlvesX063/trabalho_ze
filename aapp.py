@@ -1,6 +1,8 @@
 import streamlit as st
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
+import unicodedata
+import re
 
 
 # ============================================================
@@ -41,6 +43,12 @@ dados = [
     ("Não consigo fazer minha matrícula", "Matrícula"),
     ("Minha matrícula não aparece", "Matrícula"),
     ("Quero saber o prazo da matrícula", "Matrícula"),
+    ("Minha matrícula está errada", "Matrícula"),
+    ("Minha matrícula deu erro", "Matrícula"),
+    ("Problema na matrícula", "Matrícula"),
+    ("Erro na matrícula", "Matrícula"),
+    ("Matrícula errada", "Matrícula"),
+    ("Matrícula não funciona", "Matrícula"),
 
     # NOTAS
     ("Quero saber minha nota", "Notas"),
@@ -50,6 +58,9 @@ dados = [
     ("Minha nota está errada", "Notas"),
     ("Professor não lançou minha nota", "Notas"),
     ("Quero contestar minha nota", "Notas"),
+    ("Nota errada", "Notas"),
+    ("Problema com minha nota", "Notas"),
+    ("Minha nota está incorreta", "Notas"),
 
     # HORÁRIOS
     ("Quero saber meu horário", "Horários"),
@@ -58,6 +69,9 @@ dados = [
     ("Quero consultar minha grade", "Horários"),
     ("Minha grade está errada", "Horários"),
     ("Não sei o horário da aula", "Horários"),
+    ("Horário errado", "Horários"),
+    ("Problema com meu horário", "Horários"),
+    ("Minha grade está incorreta", "Horários"),
 
     # FINANCEIRO
     ("Quero saber o valor da mensalidade", "Financeiro"),
@@ -68,6 +82,11 @@ dados = [
     ("Meu boleto não apareceu", "Financeiro"),
     ("Quero segunda via do boleto", "Financeiro"),
     ("Tenho uma cobrança indevida", "Financeiro"),
+    ("Boleto errado", "Financeiro"),
+    ("Boleto vencido", "Financeiro"),
+    ("Problema com boleto", "Financeiro"),
+    ("Problema financeiro", "Financeiro"),
+    ("Mensalidade atrasada", "Financeiro"),
 
     # DOCUMENTOS
     ("Preciso de uma declaração", "Documentos"),
@@ -76,6 +95,9 @@ dados = [
     ("Onde pego meu histórico?", "Documentos"),
     ("Preciso de declaração de matrícula", "Documentos"),
     ("Como solicitar documentos?", "Documentos"),
+    ("Preciso de um documento", "Documentos"),
+    ("Problema com documento", "Documentos"),
+    ("Histórico escolar", "Documentos"),
 
     # TCC
     ("Quero saber informações sobre TCC", "TCC"),
@@ -84,6 +106,8 @@ dados = [
     ("Quem pode orientar meu TCC?", "TCC"),
     ("Como escolher orientador?", "TCC"),
     ("Tenho problema com meu TCC", "TCC"),
+    ("Problema no TCC", "TCC"),
+    ("Orientação do TCC", "TCC"),
 
     # PROFESSORES
     ("Quero falar com um professor", "Professores"),
@@ -91,6 +115,8 @@ dados = [
     ("Como encontro o professor?", "Professores"),
     ("Professor não respondeu", "Professores"),
     ("Quero trocar de professor", "Professores"),
+    ("Problema com professor", "Professores"),
+    ("Meu professor não responde", "Professores"),
 
     # SUPORTE DE TI
     ("Não consigo entrar no sistema", "Suporte de TI"),
@@ -100,6 +126,10 @@ dados = [
     ("O sistema está fora do ar", "Suporte de TI"),
     ("Minha senha não funciona", "Suporte de TI"),
     ("Não consigo acessar o ambiente virtual", "Suporte de TI"),
+    ("Problema no sistema", "Suporte de TI"),
+    ("Erro no sistema", "Suporte de TI"),
+    ("Portal não funciona", "Suporte de TI"),
+    ("Não consigo entrar", "Suporte de TI"),
 
     # CANCELAMENTO
     ("Quero cancelar minha matrícula", "Cancelamento"),
@@ -108,6 +138,9 @@ dados = [
     ("Como faço para trancar o curso?", "Cancelamento"),
     ("Quero desistir da faculdade", "Cancelamento"),
     ("Quero cancelar minha inscrição", "Cancelamento"),
+    ("Quero cancelar", "Cancelamento"),
+    ("Quero trancar", "Cancelamento"),
+    ("Quero desistir", "Cancelamento"),
 
     # RECLAMAÇÃO
     ("Quero fazer uma reclamação", "Reclamação"),
@@ -116,7 +149,43 @@ dados = [
     ("Meu problema não foi resolvido", "Reclamação"),
     ("Quero reclamar de um funcionário", "Reclamação"),
     ("Estou tendo problemas com a faculdade", "Reclamação"),
+    ("Quero reclamar", "Reclamação"),
+    ("Tenho uma reclamação", "Reclamação"),
 ]
+
+
+# ============================================================
+# FUNÇÃO PARA NORMALIZAR TEXTO
+# ============================================================
+
+def normalizar_texto(texto):
+
+    texto = texto.lower()
+
+    texto = unicodedata.normalize(
+        "NFD",
+        texto
+    )
+
+    texto = "".join(
+        caractere
+        for caractere in texto
+        if unicodedata.category(caractere) != "Mn"
+    )
+
+    texto = re.sub(
+        r"[^a-z0-9\s]",
+        " ",
+        texto
+    )
+
+    texto = re.sub(
+        r"\s+",
+        " ",
+        texto
+    ).strip()
+
+    return texto
 
 
 # ============================================================
@@ -188,7 +257,7 @@ solucoes = {
     "Matrícula": {
 
         "resposta":
-            "Posso te orientar sobre matrícula.",
+            "Entendi! Sua solicitação está relacionada à matrícula.",
 
         "passos": [
             "Acesse o portal acadêmico.",
@@ -209,7 +278,7 @@ solucoes = {
     "Notas": {
 
         "resposta":
-            "Posso ajudar com problemas relacionados às suas notas.",
+            "Entendi! Sua solicitação está relacionada às notas.",
 
         "passos": [
             "Acesse o portal do aluno.",
@@ -230,7 +299,7 @@ solucoes = {
     "Horários": {
 
         "resposta":
-            "Vamos verificar o caminho para consultar ou corrigir seu horário.",
+            "Entendi! Sua solicitação está relacionada aos horários ou à grade.",
 
         "passos": [
             "Acesse o portal acadêmico.",
@@ -251,7 +320,7 @@ solucoes = {
     "Financeiro": {
 
         "resposta":
-            "Posso te orientar sobre boletos, mensalidades e questões financeiras.",
+            "Entendi! Sua solicitação está relacionada à parte financeira.",
 
         "passos": [
             "Acesse o portal financeiro da instituição.",
@@ -272,7 +341,7 @@ solucoes = {
     "Documentos": {
 
         "resposta":
-            "Posso orientar sobre a solicitação de documentos acadêmicos.",
+            "Entendi! Sua solicitação está relacionada a documentos acadêmicos.",
 
         "passos": [
             "Acesse o portal acadêmico.",
@@ -293,7 +362,7 @@ solucoes = {
     "TCC": {
 
         "resposta":
-            "Posso te orientar sobre os próximos passos relacionados ao TCC.",
+            "Entendi! Sua solicitação está relacionada ao TCC.",
 
         "passos": [
             "Consulte as regras do TCC do seu curso.",
@@ -314,7 +383,7 @@ solucoes = {
     "Professores": {
 
         "resposta":
-            "Posso indicar o caminho para entrar em contato com um professor.",
+            "Entendi! Sua solicitação está relacionada aos professores.",
 
         "passos": [
             "Verifique o portal acadêmico.",
@@ -334,7 +403,7 @@ solucoes = {
     "Suporte de TI": {
 
         "resposta":
-            "Parece que sua solicitação está relacionada ao acesso ou funcionamento de um sistema.",
+            "Entendi! Sua solicitação parece estar relacionada ao acesso ou funcionamento de um sistema.",
 
         "passos": [
             "Confira se sua internet está funcionando.",
@@ -356,7 +425,7 @@ solucoes = {
     "Cancelamento": {
 
         "resposta":
-            "Solicitações de cancelamento ou trancamento precisam seguir as regras da instituição.",
+            "Entendi. Sua solicitação está relacionada a cancelamento, trancamento ou desistência.",
 
         "passos": [
             "Consulte as regras acadêmicas do curso.",
@@ -397,32 +466,136 @@ solucoes = {
 
 
 # ============================================================
+# PALAVRAS-CHAVE POR CATEGORIA
+# ============================================================
+
+palavras_chave_categoria = {
+
+    "Matrícula": [
+        "matricula",
+        "rematricula",
+        "renovar matricula",
+        "renovacao de matricula",
+        "inscricao"
+    ],
+
+    "Notas": [
+        "nota",
+        "notas",
+        "prova",
+        "resultado",
+        "avaliacao",
+        "lancamento de nota"
+    ],
+
+    "Horários": [
+        "horario",
+        "horarios",
+        "grade",
+        "grade horaria",
+        "aula",
+        "sala",
+        "turma"
+    ],
+
+    "Financeiro": [
+        "boleto",
+        "mensalidade",
+        "mensalidades",
+        "cobranca",
+        "divida",
+        "pagamento",
+        "pagar",
+        "financeiro",
+        "parcela",
+        "parcelas",
+        "juros"
+    ],
+
+    "Documentos": [
+        "documento",
+        "documentos",
+        "historico",
+        "declaracao",
+        "certificado",
+        "comprovante",
+        "atestado"
+    ],
+
+    "TCC": [
+        "tcc",
+        "trabalho de conclusao",
+        "orientador",
+        "orientacao do tcc"
+    ],
+
+    "Professores": [
+        "professor",
+        "professora",
+        "professores",
+        "docente",
+        "docentes"
+    ],
+
+    "Suporte de TI": [
+        "login",
+        "senha",
+        "acesso",
+        "portal",
+        "sistema",
+        "site",
+        "ambiente virtual",
+        "erro no sistema",
+        "nao consigo entrar",
+        "nao consigo acessar"
+    ],
+
+    "Cancelamento": [
+        "cancelar",
+        "cancelamento",
+        "trancar",
+        "trancamento",
+        "desistir",
+        "desistencia"
+    ],
+
+    "Reclamação": [
+        "reclamacao",
+        "reclamar",
+        "insatisfeito",
+        "denuncia",
+        "problema grave"
+    ]
+}
+
+
+# ============================================================
 # PALAVRAS QUE INDICAM NECESSIDADE DE HUMANO
 # ============================================================
 
 palavras_humano = [
     "processo judicial",
     "advogado",
-    "justiça",
+    "justica",
     "procon",
-    "ameaça",
+    "ameaca",
     "assédio",
-    "discriminação",
-    "violência",
+    "assedio",
+    "discriminacao",
+    "violencia",
     "fraude",
-    "denúncia",
+    "denuncia",
     "erro grave",
     "problema grave"
 ]
 
 
 # ============================================================
-# NOVO - SAUDAÇÕES
+# SAUDAÇÕES
 # ============================================================
 
 saudacoes = [
     "oi",
-    "olá",
     "ola",
     "oie",
     "oii",
@@ -432,50 +605,45 @@ saudacoes = [
     "boa noite",
     "tudo bem",
     "tudo bom",
-    "como você está",
-    "como vc está",
-    "quem é você",
+    "como voce esta",
+    "como vc esta",
     "quem e voce"
 ]
 
 
 # ============================================================
-# NOVO - PERGUNTAS DE CONTINUAÇÃO
+# PERGUNTAS DE CONTINUAÇÃO
 # ============================================================
 
 palavras_continuacao = [
     "e como",
-    "como faço",
     "como faco",
     "e agora",
-    "o que faço",
     "o que faco",
     "onde vejo",
     "onde encontro",
-    "onde faço",
     "onde faco",
     "qual o prazo",
     "e se",
-    "não funcionou",
     "nao funcionou",
-    "não deu certo",
     "nao deu certo",
-    "ainda não",
     "ainda nao",
     "entendi",
     "pode explicar",
     "explique melhor",
-    "mais informações",
-    "mais informacoes"
+    "mais informacoes",
+    "como resolvo",
+    "como resolver",
+    "o que devo fazer",
+    "qual caminho"
 ]
 
 
 # ============================================================
-# NOVO - PALAVRAS QUE INDICAM QUE O USUÁRIO QUER HUMANO
+# PEDIDOS DE ATENDIMENTO HUMANO
 # ============================================================
 
 palavras_pedir_humano = [
-    "quero falar com alguém",
     "quero falar com alguem",
     "quero atendente",
     "quero falar com atendente",
@@ -483,21 +651,19 @@ palavras_pedir_humano = [
     "quero atendimento humano",
     "atendimento humano",
     "falar com uma pessoa",
-    "falar com alguém",
     "falar com alguem",
-    "não quero falar com robô",
     "nao quero falar com robo",
     "quero falar com uma pessoa"
 ]
 
 
 # ============================================================
-# NOVO - FUNÇÃO PARA IDENTIFICAR SAUDAÇÃO
+# FUNÇÃO - SAUDAÇÃO
 # ============================================================
 
 def eh_saudacao(texto):
 
-    texto = texto.lower().strip()
+    texto = normalizar_texto(texto)
 
     if texto in saudacoes:
         return True
@@ -506,12 +672,12 @@ def eh_saudacao(texto):
 
 
 # ============================================================
-# NOVO - FUNÇÃO PARA IDENTIFICAR CONTINUAÇÃO
+# FUNÇÃO - CONTINUAÇÃO
 # ============================================================
 
 def eh_continuacao(texto):
 
-    texto = texto.lower().strip()
+    texto = normalizar_texto(texto)
 
     for palavra in palavras_continuacao:
 
@@ -522,7 +688,68 @@ def eh_continuacao(texto):
 
 
 # ============================================================
-# NOVO - RESPOSTA INTELIGENTE DE SAUDAÇÃO
+# NOVA FUNÇÃO - ENCONTRAR CATEGORIA POR PALAVRAS-CHAVE
+# ============================================================
+
+def encontrar_categoria_por_palavras(texto):
+
+    texto = normalizar_texto(texto)
+
+    pontuacao = {}
+
+    for categoria, palavras in palavras_chave_categoria.items():
+
+        pontuacao[categoria] = 0
+
+        for palavra in palavras:
+
+            palavra_normalizada = normalizar_texto(palavra)
+
+            # Palavra/frase encontrada
+            if palavra_normalizada in texto:
+
+                # Frases mais específicas recebem mais peso
+                quantidade_palavras = len(
+                    palavra_normalizada.split()
+                )
+
+                if quantidade_palavras >= 2:
+                    pontuacao[categoria] += 3
+                else:
+                    pontuacao[categoria] += 2
+
+
+    # Se nenhuma palavra-chave foi encontrada
+    if max(pontuacao.values()) == 0:
+
+        return None
+
+
+    # Categoria com maior pontuação
+    melhor_categoria = max(
+        pontuacao,
+        key=pontuacao.get
+    )
+
+
+    # Verificar empate
+    maiores = [
+        categoria
+        for categoria, pontos in pontuacao.items()
+        if pontos == pontuacao[melhor_categoria]
+    ]
+
+
+    if len(maiores) > 1:
+
+        return None
+
+
+    return melhor_categoria
+
+
+# ============================================================
+# RESPOSTA DE SAUDAÇÃO
 # ============================================================
 
 def responder_saudacao():
@@ -531,7 +758,7 @@ def responder_saudacao():
         "Olá! 👋😊 Seja bem-vindo ao atendimento acadêmico.\n\n"
         "Posso te ajudar a identificar o caminho mais adequado "
         "para resolver sua solicitação.\n\n"
-        "Você pode, por exemplo, perguntar sobre:\n\n"
+        "Você pode perguntar sobre:\n\n"
         "🎓 Matrícula\n"
         "📝 Notas\n"
         "🕐 Horários\n"
@@ -548,7 +775,7 @@ def responder_saudacao():
 
 
 # ============================================================
-# NOVO - RESPOSTA PARA CONTINUAÇÃO
+# RESPOSTA DE CONTINUAÇÃO
 # ============================================================
 
 def responder_continuacao(categoria):
@@ -562,9 +789,12 @@ def responder_continuacao(categoria):
 
     resposta += dados["resposta"] + "\n\n"
 
-    resposta += "🛠️ **O próximo caminho recomendado é:**\n\n"
+    resposta += "🛠️ **Caminho recomendado:**\n\n"
 
-    for i, passo in enumerate(dados["passos"], start=1):
+    for i, passo in enumerate(
+        dados["passos"],
+        start=1
+    ):
 
         resposta += f"**{i}.** {passo}\n\n"
 
@@ -576,7 +806,7 @@ def responder_continuacao(categoria):
 
     resposta += (
         "💬 Se alguma dessas etapas não funcionar, "
-        "me explique o que aconteceu e eu tento indicar "
+        "me explique o que aconteceu e vou tentar indicar "
         "o próximo caminho."
     )
 
@@ -584,7 +814,7 @@ def responder_continuacao(categoria):
 
 
 # ============================================================
-# NOVO - RESPOSTA QUANDO USUÁRIO PEDE HUMANO
+# RESPOSTA PARA ATENDIMENTO HUMANO
 # ============================================================
 
 def responder_humano():
@@ -607,23 +837,23 @@ def responder_humano():
 
 
 # ============================================================
-# NOVO - RESPOSTA QUANDO NÃO ENTENDEU
+# RESPOSTA QUANDO NÃO ENTENDEU
 # ============================================================
 
 def responder_nao_entendi():
 
     return (
-        "🤔 Quero te ajudar, mas ainda não consegui entender "
-        "exatamente qual é o seu problema.\n\n"
+        "🤔 Quero te ajudar, mas ainda não consegui identificar "
+        "com segurança qual é o seu problema.\n\n"
         "Tente me explicar um pouco mais, por exemplo:\n\n"
         "• O que aconteceu?\n"
         "• Qual sistema ou serviço você está tentando utilizar?\n"
         "• O que você precisa resolver?\n"
         "• Apareceu alguma mensagem de erro?\n\n"
-        "Quanto mais detalhes você me passar, melhor consigo "
-        "indicar o caminho adequado.\n\n"
-        "Se mesmo assim eu não conseguir identificar a solução, "
-        "vou recomendar o atendimento humano."
+        "Se você me passar mais detalhes, posso tentar identificar "
+        "o setor e o melhor caminho.\n\n"
+        "Se a situação for muito específica ou não puder ser "
+        "identificada pelo sistema, vou recomendar o atendimento humano."
     )
 
 
@@ -647,7 +877,7 @@ if "mensagens_chat" not in st.session_state:
 
 
 # ============================================================
-# NOVO - MEMÓRIA DA ÚLTIMA CATEGORIA
+# MEMÓRIA DA ÚLTIMA CATEGORIA
 # ============================================================
 
 if "ultima_categoria" not in st.session_state:
@@ -661,9 +891,13 @@ if "ultima_categoria" not in st.session_state:
 
 for mensagem_chat in st.session_state.mensagens_chat:
 
-    with st.chat_message(mensagem_chat["role"]):
+    with st.chat_message(
+        mensagem_chat["role"]
+    ):
 
-        st.write(mensagem_chat["content"])
+        st.write(
+            mensagem_chat["content"]
+        )
 
 
 # ============================================================
@@ -693,21 +927,28 @@ if mensagem:
     )
 
     with st.chat_message("user"):
+
         st.write(mensagem)
 
 
-    mensagem_minuscula = mensagem.lower().strip()
+    mensagem_normalizada = normalizar_texto(
+        mensagem
+    )
 
 
     # ========================================================
-    # 1 - VERIFICAR SE USUÁRIO QUER ATENDENTE
+    # 1 - PEDIDO DE ATENDIMENTO HUMANO
     # ========================================================
 
     quer_humano = False
 
     for palavra in palavras_pedir_humano:
 
-        if palavra in mensagem_minuscula:
+        palavra_normalizada = normalizar_texto(
+            palavra
+        )
+
+        if palavra_normalizada in mensagem_normalizada:
 
             quer_humano = True
             break
@@ -732,7 +973,7 @@ if mensagem:
 
 
     # ========================================================
-    # 2 - VERIFICAR SAUDAÇÃO
+    # 2 - SAUDAÇÃO
     # ========================================================
 
     if eh_saudacao(mensagem):
@@ -754,7 +995,7 @@ if mensagem:
 
 
     # ========================================================
-    # 3 - VERIFICAR CONTINUAÇÃO DA CONVERSA
+    # 3 - CONTINUAÇÃO DA CONVERSA
     # ========================================================
 
     if (
@@ -764,7 +1005,9 @@ if mensagem:
 
         categoria = st.session_state.ultima_categoria
 
-        resposta_chat = responder_continuacao(categoria)
+        resposta_chat = responder_continuacao(
+            categoria
+        )
 
         with st.chat_message("assistant"):
 
@@ -781,7 +1024,16 @@ if mensagem:
 
 
     # ========================================================
-    # 4 - TRANSFORMAÇÃO
+    # 4 - PALAVRAS-CHAVE
+    # ========================================================
+
+    categoria_por_palavra = encontrar_categoria_por_palavras(
+        mensagem
+    )
+
+
+    # ========================================================
+    # 5 - CLASSIFICAÇÃO DO MODELO
     # ========================================================
 
     mensagem_transformada = vectorizador.transform(
@@ -789,11 +1041,7 @@ if mensagem:
     )
 
 
-    # ========================================================
-    # 5 - CLASSIFICAÇÃO
-    # ========================================================
-
-    categoria = modelo.predict(
+    categoria_modelo = modelo.predict(
         mensagem_transformada
     )[0]
 
@@ -803,14 +1051,38 @@ if mensagem:
     )[0]
 
 
-    confianca = max(probabilidades)
+    confianca_modelo = max(probabilidades)
 
 
     # ========================================================
-    # NOVO - EVITAR CLASSIFICAÇÕES MUITO INCERTAS
+    # 6 - ESCOLHER MELHOR CLASSIFICAÇÃO
     # ========================================================
 
-    if confianca < 0.55:
+    if categoria_por_palavra is not None:
+
+        categoria = categoria_por_palavra
+
+        # Palavra-chave direta aumenta a confiança
+        confianca = max(
+            confianca_modelo,
+            0.85
+        )
+
+    else:
+
+        categoria = categoria_modelo
+
+        confianca = confianca_modelo
+
+
+    # ========================================================
+    # 7 - SE NÃO HOUVER SEGURANÇA
+    # ========================================================
+
+    if (
+        categoria_por_palavra is None
+        and confianca < 0.55
+    ):
 
         resposta_chat = responder_nao_entendi()
 
@@ -819,9 +1091,8 @@ if mensagem:
             st.write(resposta_chat)
 
             st.error(
-                "👨‍💼 Se você não conseguir explicar o problema "
-                "ou se a situação for mais complexa, procure "
-                "um atendente da instituição."
+                "👨‍💼 Se o problema não puder ser identificado, "
+                "procure um atendente da instituição."
             )
 
         st.session_state.mensagens_chat.append(
@@ -835,14 +1106,14 @@ if mensagem:
 
 
     # ========================================================
-    # 6 - SALVAR CATEGORIA NA MEMÓRIA
+    # 8 - SALVAR MEMÓRIA
     # ========================================================
 
     st.session_state.ultima_categoria = categoria
 
 
     # ========================================================
-    # 7 - SETOR E SOLUÇÃO
+    # 9 - SETOR E SOLUÇÃO
     # ========================================================
 
     setor = setores[categoria]
@@ -851,14 +1122,18 @@ if mensagem:
 
 
     # ========================================================
-    # 8 - DETECTAR NECESSIDADE DE HUMANO
+    # 10 - DETECTAR NECESSIDADE DE HUMANO
     # ========================================================
 
     precisa_humano = False
 
     for palavra in palavras_humano:
 
-        if palavra in mensagem_minuscula:
+        palavra_normalizada = normalizar_texto(
+            palavra
+        )
+
+        if palavra_normalizada in mensagem_normalizada:
 
             precisa_humano = True
             break
@@ -873,7 +1148,7 @@ if mensagem:
 
 
     # ========================================================
-    # 9 - RESPOSTA DO ASSISTENTE
+    # 11 - RESPOSTA DO ASSISTENTE
     # ========================================================
 
     with st.chat_message("assistant"):
@@ -881,7 +1156,6 @@ if mensagem:
         st.write(
             dados_solucao["resposta"]
         )
-
 
         st.divider()
 
@@ -894,6 +1168,10 @@ if mensagem:
             f"🏷️ **Categoria identificada:** {categoria}"
         )
 
+
+        # ----------------------------------------------------
+        # SETOR
+        # ----------------------------------------------------
 
         st.write(
             f"🏢 **Setor responsável:** {setor}"
@@ -915,7 +1193,7 @@ if mensagem:
 
 
         # ----------------------------------------------------
-        # CAMINHO DE SOLUÇÃO
+        # CAMINHO
         # ----------------------------------------------------
 
         st.subheader(
@@ -979,14 +1257,14 @@ if mensagem:
         # ----------------------------------------------------
 
         st.write(
-            "💬 Se quiser, continue a conversa. "
-            "Posso usar essa solicitação como contexto para "
-            "entender sua próxima dúvida."
+            "💬 Continue a conversa se quiser. "
+            "Posso usar o assunto anterior para interpretar "
+            "sua próxima dúvida."
         )
 
 
     # ========================================================
-    # SALVAR RESUMO NO HISTÓRICO
+    # SALVAR RESUMO
     # ========================================================
 
     resumo_resposta = (
