@@ -1562,24 +1562,11 @@ palavras_problema_nao_resolvido = [
     "nao resolveu",
     "não resolveu",
 
-    "ainda nao funciona",
-    "ainda não funciona",
-
-    "ainda esta dando erro",
-    "ainda está dando erro",
-
-    "continua dando erro",
-
-    "continua com problema",
-
-    "problema continua",
-
     "nao deu certo",
     "não deu certo",
 
-    "continua igual",
-
-    "continua acontecendo",
+    "nao consegui",
+    "não consegui",
 
     "nao consegui resolver",
     "não consegui resolver",
@@ -1587,17 +1574,168 @@ palavras_problema_nao_resolvido = [
     "nao consigo resolver",
     "não consigo resolver",
 
+    "nao estou conseguindo",
+    "não estou conseguindo",
+
+    "ainda nao consegui",
+    "ainda não consegui",
+
+    "ainda nao funciona",
+    "ainda não funciona",
+
+    "ainda nao funcionou",
+    "ainda não funcionou",
+
+    "ainda nao resolveu",
+    "ainda não resolveu",
+
+    "ainda esta dando erro",
+    "ainda está dando erro",
+
+    "continua dando erro",
+
+    "continua com erro",
+
+    "continua com problema",
+
+    "o problema continua",
+
+    "problema continua",
+
+    "continua igual",
+
+    "continua acontecendo",
+
+    "continua sem funcionar",
+
+    "continua nao funcionando",
+    "continua não funcionando",
+
+    "continua apresentando erro",
+
+    "continua apresentando problema",
+
+    "o erro continua",
+
+    "o erro ainda aparece",
+
+    "a mensagem de erro continua",
+
+    "o problema ainda existe",
+
+    "o problema ainda continua",
+
+    "nao saiu do erro",
+    "não saiu do erro",
+
     "mesmo assim nao funciona",
     "mesmo assim não funciona",
 
+    "mesmo assim nao funcionou",
+    "mesmo assim não funcionou",
+
+    "mesmo assim nao resolveu",
+    "mesmo assim não resolveu",
+
     "ja tentei",
     "já tentei",
+
+    "ja tentei e nao funcionou",
+    "já tentei e não funcionou",
+
+    "ja tentei e nao resolveu",
+    "já tentei e não resolveu",
+
+    "ja tentei resolver",
+    "já tentei resolver",
+
+    "ja tentei fazer",
+    "já tentei fazer",
+
+    "ja fiz",
+    "já fiz",
+
+    "ja fiz tudo",
+    "já fiz tudo",
+
+    "ja tentei de tudo",
+    "já tentei de tudo",
 
     "tentei e nao funcionou",
     "tentei e não funcionou",
 
     "tentei e nao resolveu",
-    "tentei e não resolveu"
+    "tentei e não resolveu",
+
+    "tentei fazer e nao consegui",
+    "tentei fazer e não consegui",
+
+    "tentei resolver e nao consegui",
+    "tentei resolver e não consegui",
+
+    "segui as orientacoes",
+    "segui as orientações",
+
+    "segui as orientacoes e nao resolveu",
+    "segui as orientações e não resolveu",
+
+    "segui as orientacoes e nao funcionou",
+    "segui as orientações e não funcionou",
+
+    "segui os passos",
+
+    "segui os passos e nao funcionou",
+    "segui os passos e não funcionou",
+
+    "fiz o que voce falou",
+    "fiz o que você falou",
+
+    "fiz o que foi orientado",
+
+    "fiz tudo e nao resolveu",
+    "fiz tudo e não resolveu",
+
+    "fiz tudo e nao funcionou",
+    "fiz tudo e não funcionou",
+
+    "nada funciona",
+
+    "nada funcionou",
+
+    "nada resolveu",
+
+    "nao adianta",
+    "não adianta",
+
+    "nao tem jeito",
+    "não tem jeito",
+
+    "nao consigo fazer",
+    "não consigo fazer",
+
+    "nao consigo acessar",
+    "não consigo acessar",
+
+    "nao consigo entrar",
+    "não consigo entrar",
+
+    "nao consigo concluir",
+    "não consigo concluir",
+
+    "nao consigo finalizar",
+    "não consigo finalizar",
+
+    "o problema nao foi resolvido",
+    "o problema não foi resolvido",
+
+    "meu problema nao foi resolvido",
+    "meu problema não foi resolvido",
+
+    "nao foi resolvido",
+    "não foi resolvido",
+
+    "continua sem solução",
+    "continua sem solucao"
 ]
 
 
