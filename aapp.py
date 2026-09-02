@@ -417,6 +417,217 @@ palavras_humano = [
 
 
 # ============================================================
+# NOVO - SAUDAÇÕES
+# ============================================================
+
+saudacoes = [
+    "oi",
+    "olá",
+    "ola",
+    "oie",
+    "oii",
+    "oiii",
+    "bom dia",
+    "boa tarde",
+    "boa noite",
+    "tudo bem",
+    "tudo bom",
+    "como você está",
+    "como vc está",
+    "quem é você",
+    "quem e voce"
+]
+
+
+# ============================================================
+# NOVO - PERGUNTAS DE CONTINUAÇÃO
+# ============================================================
+
+palavras_continuacao = [
+    "e como",
+    "como faço",
+    "como faco",
+    "e agora",
+    "o que faço",
+    "o que faco",
+    "onde vejo",
+    "onde encontro",
+    "onde faço",
+    "onde faco",
+    "qual o prazo",
+    "e se",
+    "não funcionou",
+    "nao funcionou",
+    "não deu certo",
+    "nao deu certo",
+    "ainda não",
+    "ainda nao",
+    "entendi",
+    "pode explicar",
+    "explique melhor",
+    "mais informações",
+    "mais informacoes"
+]
+
+
+# ============================================================
+# NOVO - PALAVRAS QUE INDICAM QUE O USUÁRIO QUER HUMANO
+# ============================================================
+
+palavras_pedir_humano = [
+    "quero falar com alguém",
+    "quero falar com alguem",
+    "quero atendente",
+    "quero falar com atendente",
+    "preciso de um atendente",
+    "quero atendimento humano",
+    "atendimento humano",
+    "falar com uma pessoa",
+    "falar com alguém",
+    "falar com alguem",
+    "não quero falar com robô",
+    "nao quero falar com robo",
+    "quero falar com uma pessoa"
+]
+
+
+# ============================================================
+# NOVO - FUNÇÃO PARA IDENTIFICAR SAUDAÇÃO
+# ============================================================
+
+def eh_saudacao(texto):
+
+    texto = texto.lower().strip()
+
+    if texto in saudacoes:
+        return True
+
+    return False
+
+
+# ============================================================
+# NOVO - FUNÇÃO PARA IDENTIFICAR CONTINUAÇÃO
+# ============================================================
+
+def eh_continuacao(texto):
+
+    texto = texto.lower().strip()
+
+    for palavra in palavras_continuacao:
+
+        if palavra in texto:
+            return True
+
+    return False
+
+
+# ============================================================
+# NOVO - RESPOSTA INTELIGENTE DE SAUDAÇÃO
+# ============================================================
+
+def responder_saudacao():
+
+    return (
+        "Olá! 👋😊 Seja bem-vindo ao atendimento acadêmico.\n\n"
+        "Posso te ajudar a identificar o caminho mais adequado "
+        "para resolver sua solicitação.\n\n"
+        "Você pode, por exemplo, perguntar sobre:\n\n"
+        "🎓 Matrícula\n"
+        "📝 Notas\n"
+        "🕐 Horários\n"
+        "💰 Financeiro\n"
+        "📄 Documentos\n"
+        "📚 TCC\n"
+        "👨‍🏫 Professores\n"
+        "💻 Acesso ao sistema\n"
+        "❌ Cancelamento\n"
+        "📢 Reclamações\n\n"
+        "Pode escrever sua dúvida do jeito que você falaria "
+        "com um atendente."
+    )
+
+
+# ============================================================
+# NOVO - RESPOSTA PARA CONTINUAÇÃO
+# ============================================================
+
+def responder_continuacao(categoria):
+
+    dados = solucoes[categoria]
+
+    resposta = (
+        f"Claro! 👍 Como estamos falando sobre **{categoria}**, "
+        f"vou continuar te orientando por esse caminho.\n\n"
+    )
+
+    resposta += dados["resposta"] + "\n\n"
+
+    resposta += "🛠️ **O próximo caminho recomendado é:**\n\n"
+
+    for i, passo in enumerate(dados["passos"], start=1):
+
+        resposta += f"**{i}.** {passo}\n\n"
+
+    resposta += (
+        f"🏢 **Setor responsável:** {setores[categoria]}\n\n"
+        f"📋 **Informações que podem ser necessárias:** "
+        f"{dados['documentos']}\n\n"
+    )
+
+    resposta += (
+        "💬 Se alguma dessas etapas não funcionar, "
+        "me explique o que aconteceu e eu tento indicar "
+        "o próximo caminho."
+    )
+
+    return resposta
+
+
+# ============================================================
+# NOVO - RESPOSTA QUANDO USUÁRIO PEDE HUMANO
+# ============================================================
+
+def responder_humano():
+
+    return (
+        "👨‍💼 **Claro. Nesse caso, o melhor caminho é o atendimento humano.**\n\n"
+        "O assistente virtual consegue fornecer orientações iniciais, "
+        "mas algumas situações precisam ser analisadas individualmente "
+        "por um funcionário da instituição.\n\n"
+        "📋 Recomendo informar ao atendente:\n\n"
+        "• Seu nome e matrícula;\n"
+        "• O curso e período;\n"
+        "• O que aconteceu;\n"
+        "• Quando o problema ocorreu;\n"
+        "• Protocolos ou comprovantes, se houver.\n\n"
+        "⚠️ Nunca informe sua senha ou códigos de acesso.\n\n"
+        "Se quiser, também posso tentar identificar primeiro "
+        "qual setor deve receber sua solicitação."
+    )
+
+
+# ============================================================
+# NOVO - RESPOSTA QUANDO NÃO ENTENDEU
+# ============================================================
+
+def responder_nao_entendi():
+
+    return (
+        "🤔 Quero te ajudar, mas ainda não consegui entender "
+        "exatamente qual é o seu problema.\n\n"
+        "Tente me explicar um pouco mais, por exemplo:\n\n"
+        "• O que aconteceu?\n"
+        "• Qual sistema ou serviço você está tentando utilizar?\n"
+        "• O que você precisa resolver?\n"
+        "• Apareceu alguma mensagem de erro?\n\n"
+        "Quanto mais detalhes você me passar, melhor consigo "
+        "indicar o caminho adequado.\n\n"
+        "Se mesmo assim eu não conseguir identificar a solução, "
+        "vou recomendar o atendimento humano."
+    )
+
+
+# ============================================================
 # HISTÓRICO DO CHAT
 # ============================================================
 
@@ -428,12 +639,20 @@ if "mensagens_chat" not in st.session_state:
             "role": "assistant",
             "content":
                 "Olá! 👋 Sou o assistente acadêmico. "
-                "Digite sua dúvida ou problema e vou tentar "
-                "identificar o setor responsável e indicar "
-                "possíveis caminhos para resolver."
+                "Como posso ajudar? Você pode escrever sua dúvida "
+                "normalmente, como faria com um atendente."
         }
 
     ]
+
+
+# ============================================================
+# NOVO - MEMÓRIA DA ÚLTIMA CATEGORIA
+# ============================================================
+
+if "ultima_categoria" not in st.session_state:
+
+    st.session_state.ultima_categoria = None
 
 
 # ============================================================
@@ -462,7 +681,9 @@ mensagem = st.chat_input(
 
 if mensagem:
 
-    # Mostrar mensagem do usuário
+    # ========================================================
+    # MOSTRAR MENSAGEM DO USUÁRIO
+    # ========================================================
 
     st.session_state.mensagens_chat.append(
         {
@@ -475,8 +696,92 @@ if mensagem:
         st.write(mensagem)
 
 
+    mensagem_minuscula = mensagem.lower().strip()
+
+
     # ========================================================
-    # TRANSFORMAÇÃO
+    # 1 - VERIFICAR SE USUÁRIO QUER ATENDENTE
+    # ========================================================
+
+    quer_humano = False
+
+    for palavra in palavras_pedir_humano:
+
+        if palavra in mensagem_minuscula:
+
+            quer_humano = True
+            break
+
+
+    if quer_humano:
+
+        resposta_chat = responder_humano()
+
+        with st.chat_message("assistant"):
+
+            st.write(resposta_chat)
+
+        st.session_state.mensagens_chat.append(
+            {
+                "role": "assistant",
+                "content": resposta_chat
+            }
+        )
+
+        st.stop()
+
+
+    # ========================================================
+    # 2 - VERIFICAR SAUDAÇÃO
+    # ========================================================
+
+    if eh_saudacao(mensagem):
+
+        resposta_chat = responder_saudacao()
+
+        with st.chat_message("assistant"):
+
+            st.write(resposta_chat)
+
+        st.session_state.mensagens_chat.append(
+            {
+                "role": "assistant",
+                "content": resposta_chat
+            }
+        )
+
+        st.stop()
+
+
+    # ========================================================
+    # 3 - VERIFICAR CONTINUAÇÃO DA CONVERSA
+    # ========================================================
+
+    if (
+        st.session_state.ultima_categoria is not None
+        and eh_continuacao(mensagem)
+    ):
+
+        categoria = st.session_state.ultima_categoria
+
+        resposta_chat = responder_continuacao(categoria)
+
+        with st.chat_message("assistant"):
+
+            st.write(resposta_chat)
+
+        st.session_state.mensagens_chat.append(
+            {
+                "role": "assistant",
+                "content": resposta_chat
+            }
+        )
+
+        st.stop()
+
+
+    # ========================================================
+    # 4 - TRANSFORMAÇÃO
     # ========================================================
 
     mensagem_transformada = vectorizador.transform(
@@ -485,7 +790,7 @@ if mensagem:
 
 
     # ========================================================
-    # CLASSIFICAÇÃO
+    # 5 - CLASSIFICAÇÃO
     # ========================================================
 
     categoria = modelo.predict(
@@ -501,16 +806,53 @@ if mensagem:
     confianca = max(probabilidades)
 
 
+    # ========================================================
+    # NOVO - EVITAR CLASSIFICAÇÕES MUITO INCERTAS
+    # ========================================================
+
+    if confianca < 0.55:
+
+        resposta_chat = responder_nao_entendi()
+
+        with st.chat_message("assistant"):
+
+            st.write(resposta_chat)
+
+            st.error(
+                "👨‍💼 Se você não conseguir explicar o problema "
+                "ou se a situação for mais complexa, procure "
+                "um atendente da instituição."
+            )
+
+        st.session_state.mensagens_chat.append(
+            {
+                "role": "assistant",
+                "content": resposta_chat
+            }
+        )
+
+        st.stop()
+
+
+    # ========================================================
+    # 6 - SALVAR CATEGORIA NA MEMÓRIA
+    # ========================================================
+
+    st.session_state.ultima_categoria = categoria
+
+
+    # ========================================================
+    # 7 - SETOR E SOLUÇÃO
+    # ========================================================
+
     setor = setores[categoria]
 
     dados_solucao = solucoes[categoria]
 
 
     # ========================================================
-    # DETECTAR NECESSIDADE DE HUMANO
+    # 8 - DETECTAR NECESSIDADE DE HUMANO
     # ========================================================
-
-    mensagem_minuscula = mensagem.lower()
 
     precisa_humano = False
 
@@ -530,13 +872,8 @@ if mensagem:
         precisa_humano = True
 
 
-    if confianca < 0.55:
-
-        precisa_humano = True
-
-
     # ========================================================
-    # RESPOSTA DO ASSISTENTE
+    # 9 - RESPOSTA DO ASSISTENTE
     # ========================================================
 
     with st.chat_message("assistant"):
@@ -638,16 +975,19 @@ if mensagem:
 
 
         # ----------------------------------------------------
-        # NOVA MENSAGEM
+        # CONTINUAÇÃO
         # ----------------------------------------------------
 
         st.write(
-            "💬 Se quiser, envie outra dúvida ou detalhe "
-            "melhor o seu problema."
+            "💬 Se quiser, continue a conversa. "
+            "Posso usar essa solicitação como contexto para "
+            "entender sua próxima dúvida."
         )
 
 
-    # Salvar resposta no histórico
+    # ========================================================
+    # SALVAR RESUMO NO HISTÓRICO
+    # ========================================================
 
     resumo_resposta = (
         f"Categoria: {categoria}\n\n"
@@ -714,5 +1054,7 @@ if st.sidebar.button(
         }
 
     ]
+
+    st.session_state.ultima_categoria = None
 
     st.rerun()
