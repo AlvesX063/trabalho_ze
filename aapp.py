@@ -466,6 +466,967 @@ solucoes = {
 
 
 # ============================================================
+# NOVO - BASE DE CONHECIMENTO ESPECÍFICO
+# ============================================================
+
+conhecimento_especifico = {
+
+    "Matrícula": {
+
+        "calendario": {
+            "palavras": [
+                "calendario",
+                "calendario academico",
+                "calendario escolar",
+                "datas importantes",
+                "datas da faculdade",
+                "prazo da faculdade",
+                "prazos da faculdade"
+            ],
+
+            "resposta": (
+                "📅 **Calendário Acadêmico**\n\n"
+                "O calendário acadêmico é o documento que apresenta "
+                "as principais datas e prazos da instituição durante "
+                "o período letivo.\n\n"
+
+                "📌 Normalmente ele apresenta:\n\n"
+                "• Período de matrícula;\n"
+                "• Início e término das aulas;\n"
+                "• Período de provas e avaliações;\n"
+                "• Prazos para solicitações acadêmicas;\n"
+                "• Férias e recessos;\n"
+                "• Datas importantes do semestre.\n\n"
+
+                "🔎 **Como consultar:**\n\n"
+                "1. Acesse o portal acadêmico da instituição.\n"
+                "2. Procure por **Calendário Acadêmico**, "
+                "**Calendário Escolar** ou **Datas Importantes**.\n"
+                "3. Selecione o período letivo atual.\n"
+                "4. Confira a data relacionada à sua solicitação.\n\n"
+
+                "🏢 Caso não encontre o calendário ou tenha dúvida "
+                "sobre algum prazo, procure a **Secretaria Acadêmica**."
+            )
+        },
+
+        "como fazer": {
+            "palavras": [
+                "como fazer matricula",
+                "como faco matricula",
+                "fazer matricula",
+                "realizar matricula",
+                "efetuar matricula"
+            ],
+
+            "resposta": (
+                "🎓 **Como fazer a matrícula**\n\n"
+                "A matrícula é o procedimento utilizado para confirmar "
+                "o vínculo do aluno com a instituição e, normalmente, "
+                "selecionar ou confirmar as disciplinas do período.\n\n"
+
+                "🛠️ **Como realizar:**\n\n"
+                "1. Acesse o portal acadêmico.\n"
+                "2. Procure a opção **Matrícula** ou "
+                "**Renovação de Matrícula**.\n"
+                "3. Confira as disciplinas disponíveis.\n"
+                "4. Verifique seus dados acadêmicos.\n"
+                "5. Confirme a matrícula.\n"
+                "6. Guarde o comprovante.\n\n"
+
+                "⚠️ Se a opção não estiver disponível ou aparecer "
+                "algum erro, procure a **Secretaria Acadêmica**."
+            )
+        },
+
+        "prazo": {
+            "palavras": [
+                "prazo matricula",
+                "prazo da matricula",
+                "quando termina matricula",
+                "quando acaba matricula",
+                "quando comeca matricula",
+                "quando começa matricula"
+            ],
+
+            "resposta": (
+                "📅 **Prazo da matrícula**\n\n"
+                "O prazo de matrícula é definido pela instituição e "
+                "normalmente aparece no calendário acadêmico.\n\n"
+
+                "🔎 Para verificar:\n"
+                "1. Consulte o Calendário Acadêmico.\n"
+                "2. Procure a data referente à matrícula.\n"
+                "3. Verifique se o período ainda está aberto.\n\n"
+
+                "⚠️ Se o prazo já tiver encerrado, procure a "
+                "**Secretaria Acadêmica** para verificar se existe "
+                "algum procedimento disponível."
+            )
+        },
+
+        "erro": {
+            "palavras": [
+                "erro matricula",
+                "erro na matricula",
+                "matricula deu erro",
+                "matricula nao funciona",
+                "matricula não funciona"
+            ],
+
+            "resposta": (
+                "⚠️ **Erro ao realizar a matrícula**\n\n"
+                "Um erro na matrícula pode ocorrer por diferentes "
+                "motivos, como pendências acadêmicas, problemas "
+                "cadastrais, prazo encerrado ou instabilidade do sistema.\n\n"
+
+                "🔎 Primeiro confira:\n"
+                "• Se o prazo de matrícula está aberto;\n"
+                "• Se existem pendências financeiras ou acadêmicas;\n"
+                "• Se seus dados estão corretos;\n"
+                "• Se o portal está funcionando normalmente.\n\n"
+
+                "Se o erro continuar, procure a **Secretaria Acadêmica** "
+                "e informe a mensagem apresentada pelo sistema."
+            )
+        }
+    },
+
+
+    "Notas": {
+
+        "onde ver": {
+            "palavras": [
+                "onde vejo nota",
+                "onde vejo minhas notas",
+                "onde consultar nota",
+                "como ver nota",
+                "consultar minhas notas"
+            ],
+
+            "resposta": (
+                "📝 **Onde consultar suas notas**\n\n"
+                "As notas representam os resultados obtidos pelo aluno "
+                "nas avaliações realizadas durante o período letivo.\n\n"
+
+                "🔎 **Para consultar:**\n"
+                "1. Acesse o portal acadêmico.\n"
+                "2. Entre em **Notas**, **Boletim** ou "
+                "**Desempenho Acadêmico**.\n"
+                "3. Selecione o período letivo.\n"
+                "4. Escolha a disciplina desejada.\n\n"
+
+                "Se a nota não aparecer dentro do prazo previsto, "
+                "procure a **Secretaria Acadêmica ou Coordenação**."
+            )
+        },
+
+        "nota nao apareceu": {
+            "palavras": [
+                "nota nao apareceu",
+                "nota não apareceu",
+                "nota nao foi lancada",
+                "nota não foi lançada",
+                "professor nao lancou",
+                "professor não lançou"
+            ],
+
+            "resposta": (
+                "⏳ **Minha nota não apareceu**\n\n"
+                "Quando uma nota não aparece no sistema, pode ser que "
+                "o lançamento ainda não tenha sido realizado ou que "
+                "o sistema ainda não tenha atualizado a informação.\n\n"
+
+                "📌 Verifique:\n"
+                "• Se a disciplina está correta;\n"
+                "• Se o período letivo está correto;\n"
+                "• Se o prazo de lançamento já terminou.\n\n"
+
+                "Se o prazo já passou e a nota continua ausente, "
+                "procure a **Coordenação ou Secretaria Acadêmica**."
+            )
+        },
+
+        "nota errada": {
+            "palavras": [
+                "nota errada",
+                "nota incorreta",
+                "nota esta errada",
+                "minha nota esta errada",
+                "contestar nota",
+                "contestacao de nota"
+            ],
+
+            "resposta": (
+                "⚠️ **Nota incorreta ou contestação de nota**\n\n"
+                "Se você acredita que uma nota foi lançada "
+                "incorretamente, é importante verificar a avaliação "
+                "e os critérios utilizados.\n\n"
+
+                "📌 Tenha em mãos:\n"
+                "• Disciplina;\n"
+                "• Avaliação;\n"
+                "• Nota apresentada;\n"
+                "• Informações que justifiquem a contestação.\n\n"
+
+                "A correção ou alteração da nota precisa ser analisada "
+                "pelo professor ou responsável acadêmico."
+            )
+        },
+
+        "media": {
+            "palavras": [
+                "media",
+                "media final",
+                "calcular media",
+                "calculo da media",
+                "nota minima",
+                "media para passar"
+            ],
+
+            "resposta": (
+                "📊 **Média acadêmica**\n\n"
+                "A média acadêmica é o resultado utilizado pela "
+                "instituição para avaliar o desempenho do aluno "
+                "em determinada disciplina.\n\n"
+
+                "⚠️ A forma de cálculo pode variar conforme o curso "
+                "e as regras da instituição.\n\n"
+
+                "Por isso, consulte o regulamento acadêmico ou o "
+                "professor da disciplina para confirmar os pesos, "
+                "avaliações e média mínima exigida."
+            )
+        }
+    },
+
+
+    "Horários": {
+
+        "onde ver": {
+            "palavras": [
+                "onde vejo horario",
+                "onde vejo horarios",
+                "como ver horario",
+                "consultar horario",
+                "ver meu horario"
+            ],
+
+            "resposta": (
+                "🕐 **Consulta de horários**\n\n"
+                "O horário ou grade horária apresenta os dias e "
+                "horários das disciplinas que você deverá cursar.\n\n"
+
+                "🔎 Para consultar:\n"
+                "1. Acesse o portal acadêmico.\n"
+                "2. Procure por **Horários** ou **Grade Horária**.\n"
+                "3. Confira as disciplinas e horários.\n"
+                "4. Verifique também sala, turma e professor."
+            )
+        },
+
+        "grade": {
+            "palavras": [
+                "grade",
+                "grade horaria",
+                "minha grade",
+                "grade de aulas",
+                "grade das aulas"
+            ],
+
+            "resposta": (
+                "📚 **Grade Horária**\n\n"
+                "A grade horária organiza as disciplinas do aluno "
+                "de acordo com os dias e horários das aulas.\n\n"
+
+                "Ela pode apresentar:\n"
+                "• Disciplina;\n"
+                "• Dia da semana;\n"
+                "• Horário;\n"
+                "• Sala;\n"
+                "• Professor;\n"
+                "• Turma.\n\n"
+
+                "Consulte o portal acadêmico para visualizar sua grade."
+            )
+        },
+
+        "sala": {
+            "palavras": [
+                "qual sala",
+                "onde e minha sala",
+                "onde fica minha sala",
+                "sala da aula",
+                "sala da disciplina"
+            ],
+
+            "resposta": (
+                "🏫 **Sala da aula**\n\n"
+                "A sala indica o local onde determinada disciplina "
+                "será realizada presencialmente.\n\n"
+
+                "🔎 Verifique a grade horária ou o portal acadêmico "
+                "para encontrar a sala vinculada à disciplina.\n\n"
+
+                "Se a sala não aparecer ou estiver incorreta, "
+                "procure a **Secretaria Acadêmica**."
+            )
+        },
+
+        "horario errado": {
+            "palavras": [
+                "horario errado",
+                "horario incorreto",
+                "grade errada",
+                "grade incorreta",
+                "horario mudou",
+                "mudaram meu horario"
+            ],
+
+            "resposta": (
+                "⚠️ **Problema com o horário**\n\n"
+                "Se sua grade apresentar um horário diferente do "
+                "esperado, confira primeiro se houve alguma alteração "
+                "recente na turma ou disciplina.\n\n"
+
+                "Se a informação continuar incorreta, procure a "
+                "**Secretaria Acadêmica**."
+            )
+        }
+    },
+
+
+    "Financeiro": {
+
+        "boleto": {
+            "palavras": [
+                "onde encontro boleto",
+                "onde vejo boleto",
+                "como pegar boleto",
+                "como gerar boleto",
+                "meu boleto"
+            ],
+
+            "resposta": (
+                "💰 **Boleto da mensalidade**\n\n"
+                "O boleto é o documento utilizado para realizar o "
+                "pagamento de uma mensalidade ou outra cobrança.\n\n"
+
+                "🔎 Normalmente você pode encontrá-lo no portal "
+                "financeiro ou na área de pagamentos.\n\n"
+
+                "1. Acesse o portal.\n"
+                "2. Entre em **Financeiro** ou **Pagamentos**.\n"
+                "3. Localize a parcela.\n"
+                "4. Gere ou visualize o boleto.\n\n"
+
+                "Se ele não estiver disponível, procure o "
+                "**Setor Financeiro**."
+            )
+        },
+
+        "segunda via": {
+            "palavras": [
+                "segunda via",
+                "segunda via boleto",
+                "gerar segunda via",
+                "boleto novamente"
+            ],
+
+            "resposta": (
+                "🧾 **Segunda via do boleto**\n\n"
+                "A segunda via permite gerar novamente um boleto "
+                "quando o documento original não está disponível.\n\n"
+
+                "🔎 Acesse o portal financeiro, localize a parcela "
+                "e procure pela opção **Segunda Via** ou "
+                "**Gerar Boleto**.\n\n"
+
+                "Se a opção não estiver disponível, procure o "
+                "**Setor Financeiro**."
+            )
+        },
+
+        "mensalidade": {
+            "palavras": [
+                "valor mensalidade",
+                "valor da mensalidade",
+                "quanto custa mensalidade",
+                "preco da mensalidade",
+                "mensalidade"
+            ],
+
+            "resposta": (
+                "💵 **Mensalidade**\n\n"
+                "A mensalidade é o valor cobrado pela instituição "
+                "pela prestação dos serviços educacionais.\n\n"
+
+                "O valor pode variar conforme curso, período, "
+                "bolsas, descontos ou condições contratuais.\n\n"
+
+                "Para consultar o valor exato, verifique o portal "
+                "financeiro ou procure o **Setor Financeiro**."
+            )
+        },
+
+        "divida": {
+            "palavras": [
+                "divida",
+                "divida atrasada",
+                "mensalidade atrasada",
+                "negociar divida",
+                "negociacao",
+                "parcelar divida"
+            ],
+
+            "resposta": (
+                "💰 **Pendência financeira**\n\n"
+                "Uma pendência financeira ocorre quando existe uma "
+                "cobrança em aberto ou não paga dentro do prazo.\n\n"
+
+                "Para verificar a situação, consulte o portal "
+                "financeiro e identifique as parcelas pendentes.\n\n"
+
+                "⚠️ Negociação, parcelamento e condições de pagamento "
+                "devem ser analisados pelo **Setor Financeiro**."
+            )
+        }
+    },
+
+
+    "Documentos": {
+
+        "historico": {
+            "palavras": [
+                "historico",
+                "historico escolar",
+                "onde pego historico",
+                "como pegar historico"
+            ],
+
+            "resposta": (
+                "📄 **Histórico Escolar**\n\n"
+                "O histórico escolar é um documento acadêmico que "
+                "registra informações da trajetória do aluno, como "
+                "disciplinas cursadas, resultados e períodos acadêmicos.\n\n"
+
+                "🔎 Para solicitar:\n"
+                "1. Acesse o portal acadêmico.\n"
+                "2. Procure por **Documentos** ou "
+                "**Solicitação de Documentos**.\n"
+                "3. Localize o histórico escolar.\n"
+                "4. Solicite o documento.\n"
+                "5. Acompanhe o prazo de emissão.\n\n"
+
+                "Se não estiver disponível, procure a "
+                "**Secretaria Acadêmica**."
+            )
+        },
+
+        "declaracao": {
+            "palavras": [
+                "declaracao",
+                "declaracao de matricula",
+                "declaracao escolar",
+                "declaracao de aluno"
+            ],
+
+            "resposta": (
+                "📋 **Declaração acadêmica**\n\n"
+                "A declaração é um documento emitido pela instituição "
+                "para comprovar determinada informação acadêmica do aluno.\n\n"
+
+                "Ela pode ser utilizada, por exemplo, para comprovar "
+                "matrícula ou vínculo acadêmico, conforme o documento "
+                "disponibilizado pela instituição.\n\n"
+
+                "🔎 Normalmente a solicitação pode ser realizada "
+                "pelo portal acadêmico, na área de documentos."
+            )
+        },
+
+        "prazo": {
+            "palavras": [
+                "prazo documento",
+                "prazo do documento",
+                "quanto demora documento",
+                "quando fica pronto documento"
+            ],
+
+            "resposta": (
+                "⏳ **Prazo para emissão de documentos**\n\n"
+                "O prazo é o período necessário para que a instituição "
+                "processe e disponibilize o documento solicitado.\n\n"
+
+                "O prazo pode variar conforme o tipo de documento "
+                "e as regras da instituição.\n\n"
+
+                "🔎 Consulte a solicitação realizada no portal "
+                "acadêmico para acompanhar o andamento."
+            )
+        }
+    },
+
+
+    "TCC": {
+
+        "conceito": {
+            "palavras": [
+                "o que e tcc",
+                "o que é tcc",
+                "tcc o que e",
+                "tcc o que é"
+            ],
+
+            "resposta": (
+                "📚 **O que é o TCC?**\n\n"
+                "TCC significa **Trabalho de Conclusão de Curso**. "
+                "É uma atividade acadêmica desenvolvida pelo aluno "
+                "como parte da conclusão da graduação, conforme as "
+                "regras do curso.\n\n"
+
+                "O trabalho pode envolver pesquisa, análise de um "
+                "problema, desenvolvimento de um projeto ou outro "
+                "formato definido pela instituição.\n\n"
+
+                "📌 Normalmente o aluno precisa:\n"
+                "• Definir um tema;\n"
+                "• Ter um orientador;\n"
+                "• Desenvolver o trabalho;\n"
+                "• Seguir as normas acadêmicas;\n"
+                "• Entregar o trabalho dentro do prazo;\n"
+                "• Apresentar o trabalho, quando exigido."
+            )
+        },
+
+        "prazo": {
+            "palavras": [
+                "prazo tcc",
+                "prazo do tcc",
+                "entrega tcc",
+                "quando entregar tcc",
+                "data entrega tcc"
+            ],
+
+            "resposta": (
+                "📅 **Prazo de entrega do TCC**\n\n"
+                "O prazo de entrega é definido pelo curso e normalmente "
+                "aparece no calendário acadêmico ou no cronograma "
+                "específico do TCC.\n\n"
+
+                "🔎 Consulte:\n"
+                "• Calendário acadêmico;\n"
+                "• Cronograma do TCC;\n"
+                "• Orientações da Coordenação;\n"
+                "• Informações fornecidas pelo orientador.\n\n"
+
+                "⚠️ Se você não encontrar a data oficial, procure "
+                "a **Coordenação do Curso**."
+            )
+        },
+
+        "orientador": {
+            "palavras": [
+                "quem pode orientar",
+                "como escolher orientador",
+                "escolher orientador",
+                "orientador tcc",
+                "professor orientador"
+            ],
+
+            "resposta": (
+                "👨‍🏫 **Orientador do TCC**\n\n"
+                "O orientador é o professor responsável por acompanhar "
+                "o desenvolvimento acadêmico do TCC e auxiliar o aluno "
+                "durante a elaboração do trabalho.\n\n"
+
+                "A escolha normalmente depende das regras do curso, "
+                "da disponibilidade dos professores e da área de "
+                "interesse do aluno.\n\n"
+
+                "Para saber quais professores podem orientar seu trabalho, "
+                "procure a **Coordenação do Curso**."
+            )
+        }
+    },
+
+
+    "Professores": {
+
+        "contato": {
+            "palavras": [
+                "contato professor",
+                "contato do professor",
+                "email professor",
+                "telefone professor",
+                "como falar com professor"
+            ],
+
+            "resposta": (
+                "👨‍🏫 **Contato do professor**\n\n"
+                "O contato do professor normalmente pode ser encontrado "
+                "no portal acadêmico, ambiente virtual de aprendizagem "
+                "ou por meio do e-mail institucional.\n\n"
+
+                "🔎 Procure:\n"
+                "1. Portal acadêmico;\n"
+                "2. Área de professores;\n"
+                "3. Ambiente virtual;\n"
+                "4. E-mail institucional.\n\n"
+
+                "Se não encontrar o contato, procure a "
+                "**Coordenação do Curso**."
+            )
+        },
+
+        "nao responde": {
+            "palavras": [
+                "professor nao responde",
+                "professor não responde",
+                "professor nao respondeu",
+                "professor não respondeu"
+            ],
+
+            "resposta": (
+                "📩 **Professor não respondeu**\n\n"
+                "Se o professor ainda não respondeu, confira primeiro "
+                "se a mensagem foi enviada pelo canal correto e se "
+                "houve tempo suficiente para o retorno.\n\n"
+
+                "Se o contato continuar sem resposta e a situação "
+                "estiver prejudicando sua atividade acadêmica, "
+                "procure a **Coordenação do Curso**.\n\n"
+
+                "📋 Se possível, guarde o registro da mensagem enviada."
+            )
+        },
+
+        "troca": {
+            "palavras": [
+                "trocar professor",
+                "troca de professor",
+                "mudar professor",
+                "mudanca de professor"
+            ],
+
+            "resposta": (
+                "🔄 **Troca de professor**\n\n"
+                "A troca de professor depende das regras da instituição "
+                "e da existência de justificativa ou disponibilidade.\n\n"
+
+                "Esse tipo de solicitação normalmente precisa ser "
+                "avaliado pela **Coordenação do Curso**.\n\n"
+
+                "Explique o motivo da solicitação e informe a disciplina "
+                "envolvida."
+            )
+        }
+    },
+
+
+    "Suporte de TI": {
+
+        "senha": {
+            "palavras": [
+                "esqueci minha senha",
+                "esqueci senha",
+                "recuperar senha",
+                "resetar senha",
+                "redefinir senha",
+                "senha esquecida"
+            ],
+
+            "resposta": (
+                "🔐 **Esqueci minha senha**\n\n"
+                "A senha é utilizada para autenticar seu acesso aos "
+                "sistemas acadêmicos.\n\n"
+
+                "🔎 Para recuperar:\n"
+                "1. Acesse a tela de login.\n"
+                "2. Procure **Esqueci minha senha** ou "
+                "**Recuperar senha**.\n"
+                "3. Informe os dados solicitados.\n"
+                "4. Siga as instruções recebidas.\n\n"
+
+                "⚠️ Nunca informe sua senha para outra pessoa."
+            )
+        },
+
+        "login": {
+            "palavras": [
+                "login",
+                "nao consigo entrar",
+                "não consigo entrar",
+                "entrar no sistema",
+                "acessar sistema"
+            ],
+
+            "resposta": (
+                "💻 **Problema de login**\n\n"
+                "O login é o processo utilizado para acessar o sistema "
+                "com seu usuário e senha.\n\n"
+
+                "Se não conseguir entrar:\n"
+                "1. Confira seu usuário;\n"
+                "2. Confira sua senha;\n"
+                "3. Verifique sua conexão com a internet;\n"
+                "4. Tente outro navegador;\n"
+                "5. Utilize a opção de recuperação de senha, se necessário.\n\n"
+
+                "Se continuar sem acesso, procure o **Suporte de TI**."
+            )
+        },
+
+        "portal": {
+            "palavras": [
+                "portal",
+                "portal academico",
+                "portal nao funciona",
+                "portal não funciona"
+            ],
+
+            "resposta": (
+                "🌐 **Portal acadêmico**\n\n"
+                "O portal acadêmico é o ambiente utilizado pelo aluno "
+                "para acessar serviços e informações da instituição, "
+                "como notas, matrícula, documentos e horários.\n\n"
+
+                "Se o portal não funcionar:\n"
+                "• Atualize a página;\n"
+                "• Teste outro navegador;\n"
+                "• Verifique sua internet;\n"
+                "• Tente novamente após alguns minutos.\n\n"
+
+                "Se o problema persistir, procure o **Suporte de TI**."
+            )
+        },
+
+        "erro": {
+            "palavras": [
+                "erro sistema",
+                "erro no sistema",
+                "sistema com erro",
+                "problema sistema",
+                "sistema nao funciona",
+                "sistema não funciona"
+            ],
+
+            "resposta": (
+                "⚠️ **Erro no sistema**\n\n"
+                "Um erro no sistema pode estar relacionado ao acesso, "
+                "navegador, conexão ou ao próprio serviço da instituição.\n\n"
+
+                "🔎 Tente:\n"
+                "1. Atualizar a página;\n"
+                "2. Fechar e abrir novamente;\n"
+                "3. Utilizar outro navegador;\n"
+                "4. Verificar sua internet.\n\n"
+
+                "Se o erro continuar, informe ao **Suporte de TI** "
+                "qual mensagem apareceu na tela.\n\n"
+
+                "⚠️ Nunca envie sua senha."
+            )
+        }
+    },
+
+
+    "Cancelamento": {
+
+        "cancelamento": {
+            "palavras": [
+                "cancelar matricula",
+                "cancelar curso",
+                "cancelamento matricula",
+                "cancelamento curso"
+            ],
+
+            "resposta": (
+                "❌ **Cancelamento**\n\n"
+                "O cancelamento é o procedimento utilizado para "
+                "encerrar o vínculo acadêmico conforme as regras "
+                "da instituição.\n\n"
+
+                "Antes de solicitar, verifique:\n"
+                "• Prazos;\n"
+                "• Pendências financeiras;\n"
+                "• Consequências acadêmicas;\n"
+                "• Regras do contrato ou instituição.\n\n"
+
+                "⚠️ Como o cancelamento pode gerar consequências "
+                "acadêmicas e financeiras, procure a "
+                "**Secretaria Acadêmica / Atendimento**."
+            )
+        },
+
+        "trancamento": {
+            "palavras": [
+                "trancar",
+                "trancamento",
+                "trancar faculdade",
+                "trancar curso"
+            ],
+
+            "resposta": (
+                "⏸️ **Trancamento**\n\n"
+                "O trancamento normalmente permite interromper "
+                "temporariamente os estudos mantendo determinadas "
+                "condições de vínculo com a instituição.\n\n"
+
+                "As regras, prazos e condições variam conforme "
+                "a instituição e o curso.\n\n"
+
+                "🔎 Antes de solicitar, verifique as regras "
+                "acadêmicas e procure a **Secretaria Acadêmica**."
+            )
+        },
+
+        "desistencia": {
+            "palavras": [
+                "desistir",
+                "desistencia",
+                "desistir da faculdade",
+                "desistir do curso"
+            ],
+
+            "resposta": (
+                "⚠️ **Desistência do curso**\n\n"
+                "A desistência representa a decisão do aluno de "
+                "não continuar o curso, mas o procedimento correto "
+                "depende das regras da instituição.\n\n"
+
+                "Antes de realizar a solicitação, confirme as "
+                "consequências acadêmicas e financeiras.\n\n"
+
+                "🏢 Recomendo procurar a **Secretaria Acadêmica / "
+                "Atendimento** para receber a orientação correta."
+            )
+        }
+    },
+
+
+    "Reclamação": {
+
+        "como reclamar": {
+            "palavras": [
+                "como fazer reclamacao",
+                "como faco reclamacao",
+                "onde reclamar",
+                "registrar reclamacao",
+                "fazer reclamacao"
+            ],
+
+            "resposta": (
+                "📢 **Como registrar uma reclamação**\n\n"
+                "A reclamação é utilizada para registrar formalmente "
+                "uma insatisfação relacionada a um serviço, atendimento "
+                "ou situação ocorrida na instituição.\n\n"
+
+                "📌 Ao registrar:\n"
+                "1. Explique claramente o que aconteceu;\n"
+                "2. Informe data e local, quando aplicável;\n"
+                "3. Identifique o setor ou pessoa envolvida, se souber;\n"
+                "4. Anexe comprovantes quando necessário;\n"
+                "5. Solicite um número de protocolo.\n\n"
+
+                "O registro deve ser realizado pelo canal oficial "
+                "de atendimento da instituição."
+            )
+        },
+
+        "protocolo": {
+            "palavras": [
+                "protocolo",
+                "numero de protocolo",
+                "numero do protocolo",
+                "acompanhar reclamacao"
+            ],
+
+            "resposta": (
+                "📋 **Protocolo de atendimento**\n\n"
+                "O protocolo é um número ou registro utilizado para "
+                "identificar e acompanhar uma solicitação ou reclamação.\n\n"
+
+                "Guarde o número do protocolo após registrar sua "
+                "solicitação.\n\n"
+
+                "Ele pode ser utilizado para consultar o andamento "
+                "do atendimento e comprovar que a solicitação foi registrada."
+            )
+        },
+
+        "problema nao resolvido": {
+            "palavras": [
+                "problema nao resolvido",
+                "problema não resolvido",
+                "nao resolveram",
+                "não resolveram",
+                "reclamacao nao resolvida",
+                "reclamação não resolvida"
+            ],
+
+            "resposta": (
+                "⚠️ **Problema não resolvido**\n\n"
+                "Se você já entrou em contato com a instituição "
+                "e o problema não foi solucionado, reúna os "
+                "protocolos e registros dos atendimentos anteriores.\n\n"
+
+                "📌 Informe:\n"
+                "• Número do protocolo;\n"
+                "• Data do atendimento;\n"
+                "• Setor procurado;\n"
+                "• O que foi solicitado;\n"
+                "• Por que o problema continua.\n\n"
+
+                "Nesse caso, procure o **Atendimento ao Aluno** "
+                "ou o canal responsável por reclamações e ouvidoria."
+            )
+        }
+    }
+}
+
+
+# ============================================================
+# NOVO - CONHECIMENTO GERAL
+# ============================================================
+
+conhecimento_geral = {
+
+    "calendario": {
+        "palavras": [
+            "calendario",
+            "calendario academico",
+            "calendario escolar",
+            "datas importantes",
+            "datas da faculdade"
+        ],
+
+        "resposta": (
+            "📅 **Calendário Acadêmico**\n\n"
+            "O calendário acadêmico reúne as principais datas "
+            "e prazos da faculdade durante o período letivo.\n\n"
+
+            "Ele pode apresentar:\n"
+            "• Início e término das aulas;\n"
+            "• Matrículas;\n"
+            "• Provas e avaliações;\n"
+            "• Férias e recessos;\n"
+            "• Prazos acadêmicos;\n"
+            "• Outros eventos importantes.\n\n"
+
+            "🔎 **Como consultar:**\n"
+            "Acesse o portal acadêmico e procure por "
+            "**Calendário Acadêmico**, **Calendário Escolar** "
+            "ou **Datas Importantes**.\n\n"
+
+            "🏢 Se não encontrar ou tiver dúvida sobre um prazo, "
+            "procure a **Secretaria Acadêmica**."
+        )
+    }
+}
+
+
+# ============================================================
 # PALAVRAS-CHAVE POR CATEGORIA
 # ============================================================
 
@@ -762,6 +1723,86 @@ def eh_problema_nao_resolvido(texto):
             return True
 
     return False
+
+
+# ============================================================
+# NOVA FUNÇÃO - ENCONTRAR CONHECIMENTO ESPECÍFICO
+# ============================================================
+
+def encontrar_conhecimento_especifico(texto, categoria=None):
+
+    texto_normalizado = normalizar_texto(texto)
+
+    melhor_resposta = None
+    melhor_pontuacao = 0
+
+    # --------------------------------------------------------
+    # PRIMEIRO: PROCURAR DENTRO DA CATEGORIA ATUAL
+    # --------------------------------------------------------
+
+    if categoria is not None and categoria in conhecimento_especifico:
+
+        for nome_assunto, dados_assunto in conhecimento_especifico[categoria].items():
+
+            pontuacao = 0
+
+            for palavra in dados_assunto["palavras"]:
+
+                palavra_normalizada = normalizar_texto(palavra)
+
+                if palavra_normalizada in texto_normalizado:
+
+                    quantidade_palavras = len(
+                        palavra_normalizada.split()
+                    )
+
+                    if quantidade_palavras >= 2:
+                        pontuacao += 5
+                    else:
+                        pontuacao += 2
+
+            if pontuacao > melhor_pontuacao:
+
+                melhor_pontuacao = pontuacao
+                melhor_resposta = dados_assunto["resposta"]
+
+
+    # --------------------------------------------------------
+    # SEGUNDO: PROCURAR NA BASE GERAL
+    # --------------------------------------------------------
+
+    if melhor_resposta is None:
+
+        for nome_assunto, dados_assunto in conhecimento_geral.items():
+
+            pontuacao = 0
+
+            for palavra in dados_assunto["palavras"]:
+
+                palavra_normalizada = normalizar_texto(palavra)
+
+                if palavra_normalizada in texto_normalizado:
+
+                    quantidade_palavras = len(
+                        palavra_normalizada.split()
+                    )
+
+                    if quantidade_palavras >= 2:
+                        pontuacao += 5
+                    else:
+                        pontuacao += 2
+
+            if pontuacao > melhor_pontuacao:
+
+                melhor_pontuacao = pontuacao
+                melhor_resposta = dados_assunto["resposta"]
+
+
+    if melhor_pontuacao >= 2:
+
+        return melhor_resposta
+
+    return None
 
 
 # ============================================================
@@ -1189,7 +2230,71 @@ if mensagem:
 
 
     # ========================================================
-    # 5 - CONTINUAÇÃO DA CONVERSA
+    # 5 - NOVO - PROCURAR RESPOSTA ESPECÍFICA
+    # ========================================================
+
+    resposta_especifica = encontrar_conhecimento_especifico(
+        mensagem,
+        categoria_por_palavra
+    )
+
+
+    if resposta_especifica is not None:
+
+        # ----------------------------------------------------
+        # IDENTIFICAR CATEGORIA QUANDO POSSÍVEL
+        # ----------------------------------------------------
+
+        if categoria_por_palavra is not None:
+
+            categoria = categoria_por_palavra
+
+            st.session_state.ultima_categoria = categoria
+
+        elif st.session_state.ultima_categoria is not None:
+
+            categoria = st.session_state.ultima_categoria
+
+        else:
+
+            categoria = None
+
+
+        with st.chat_message("assistant"):
+
+            st.write(resposta_especifica)
+
+            if categoria is not None:
+
+                st.divider()
+
+                st.write(
+                    f"🏷️ **Categoria identificada:** {categoria}"
+                )
+
+                st.write(
+                    f"🏢 **Setor responsável:** {setores[categoria]}"
+                )
+
+            st.success(
+                "✅ Espero que essa explicação tenha ajudado. "
+                "Você pode continuar perguntando normalmente."
+            )
+
+
+        st.session_state.mensagens_chat.append(
+            {
+                "role": "assistant",
+                "content": resposta_especifica
+            }
+        )
+
+
+        st.stop()
+
+
+    # ========================================================
+    # 6 - CONTINUAÇÃO DA CONVERSA
     # ========================================================
 
     if (
@@ -1227,7 +2332,7 @@ if mensagem:
 
 
     # ========================================================
-    # 6 - CLASSIFICAÇÃO DO MODELO
+    # 7 - CLASSIFICAÇÃO DO MODELO
     # ========================================================
 
     mensagem_transformada = vectorizador.transform(
@@ -1251,7 +2356,7 @@ if mensagem:
 
 
     # ========================================================
-    # 7 - ESCOLHER MELHOR CLASSIFICAÇÃO
+    # 8 - ESCOLHER MELHOR CLASSIFICAÇÃO
     # ========================================================
 
     if categoria_por_palavra is not None:
@@ -1271,7 +2376,7 @@ if mensagem:
 
 
     # ========================================================
-    # 8 - SE NÃO HOUVER SEGURANÇA
+    # 9 - SE NÃO HOUVER SEGURANÇA
     # ========================================================
 
     if (
@@ -1308,14 +2413,14 @@ if mensagem:
 
 
     # ========================================================
-    # 9 - SALVAR MEMÓRIA
+    # 10 - SALVAR MEMÓRIA
     # ========================================================
 
     st.session_state.ultima_categoria = categoria
 
 
     # ========================================================
-    # 10 - SETOR E SOLUÇÃO
+    # 11 - SETOR E SOLUÇÃO
     # ========================================================
 
     setor = setores[categoria]
@@ -1324,7 +2429,7 @@ if mensagem:
 
 
     # ========================================================
-    # 11 - DETECTAR NECESSIDADE DE HUMANO
+    # 12 - DETECTAR NECESSIDADE DE HUMANO
     # ========================================================
 
     precisa_humano = False
@@ -1354,7 +2459,7 @@ if mensagem:
 
 
     # ========================================================
-    # 12 - RESPOSTA DO ASSISTENTE
+    # 13 - RESPOSTA DO ASSISTENTE
     # ========================================================
 
     with st.chat_message("assistant"):
