@@ -579,7 +579,6 @@ palavras_humano = [
     "justica",
     "procon",
     "ameaca",
-    "assédio",
     "assedio",
     "discriminacao",
     "violencia",
@@ -587,6 +586,57 @@ palavras_humano = [
     "denuncia",
     "erro grave",
     "problema grave"
+]
+
+
+# ============================================================
+# NOVO - FRASES QUE INDICAM QUE A SOLUÇÃO NÃO FUNCIONOU
+# ============================================================
+
+palavras_problema_nao_resolvido = [
+
+    "nao funcionou",
+    "não funcionou",
+
+    "nao resolveu",
+    "não resolveu",
+
+    "ainda nao funciona",
+    "ainda não funciona",
+
+    "ainda esta dando erro",
+    "ainda está dando erro",
+
+    "continua dando erro",
+
+    "continua com problema",
+
+    "problema continua",
+
+    "nao deu certo",
+    "não deu certo",
+
+    "continua igual",
+
+    "continua acontecendo",
+
+    "nao consegui resolver",
+    "não consegui resolver",
+
+    "nao consigo resolver",
+    "não consigo resolver",
+
+    "mesmo assim nao funciona",
+    "mesmo assim não funciona",
+
+    "ja tentei",
+    "já tentei",
+
+    "tentei e nao funcionou",
+    "tentei e não funcionou",
+
+    "tentei e nao resolveu",
+    "tentei e não resolveu"
 ]
 
 
@@ -616,6 +666,7 @@ saudacoes = [
 # ============================================================
 
 palavras_continuacao = [
+
     "e como",
     "como faco",
     "e agora",
@@ -625,9 +676,16 @@ palavras_continuacao = [
     "onde faco",
     "qual o prazo",
     "e se",
+
     "nao funcionou",
+    "não funcionou",
+
     "nao deu certo",
+    "não deu certo",
+
     "ainda nao",
+    "ainda não",
+
     "entendi",
     "pode explicar",
     "explique melhor",
@@ -644,6 +702,7 @@ palavras_continuacao = [
 # ============================================================
 
 palavras_pedir_humano = [
+
     "quero falar com alguem",
     "quero atendente",
     "quero falar com atendente",
@@ -681,14 +740,32 @@ def eh_continuacao(texto):
 
     for palavra in palavras_continuacao:
 
-        if palavra in texto:
+        if normalizar_texto(palavra) in texto:
+
             return True
 
     return False
 
 
 # ============================================================
-# NOVA FUNÇÃO - ENCONTRAR CATEGORIA POR PALAVRAS-CHAVE
+# NOVA FUNÇÃO - PROBLEMA NÃO RESOLVIDO
+# ============================================================
+
+def eh_problema_nao_resolvido(texto):
+
+    texto_normalizado = normalizar_texto(texto)
+
+    for frase in palavras_problema_nao_resolvido:
+
+        if normalizar_texto(frase) in texto_normalizado:
+
+            return True
+
+    return False
+
+
+# ============================================================
+# FUNÇÃO - ENCONTRAR CATEGORIA POR PALAVRAS-CHAVE
 # ============================================================
 
 def encontrar_categoria_por_palavras(texto):
@@ -705,38 +782,40 @@ def encontrar_categoria_por_palavras(texto):
 
             palavra_normalizada = normalizar_texto(palavra)
 
-            # Palavra/frase encontrada
             if palavra_normalizada in texto:
 
-                # Frases mais específicas recebem mais peso
                 quantidade_palavras = len(
                     palavra_normalizada.split()
                 )
 
                 if quantidade_palavras >= 2:
+
                     pontuacao[categoria] += 3
+
                 else:
+
                     pontuacao[categoria] += 2
 
 
-    # Se nenhuma palavra-chave foi encontrada
     if max(pontuacao.values()) == 0:
 
         return None
 
 
-    # Categoria com maior pontuação
     melhor_categoria = max(
         pontuacao,
         key=pontuacao.get
     )
 
 
-    # Verificar empate
     maiores = [
+
         categoria
+
         for categoria, pontos in pontuacao.items()
+
         if pontos == pontuacao[melhor_categoria]
+
     ]
 
 
@@ -756,9 +835,12 @@ def responder_saudacao():
 
     return (
         "Olá! 👋😊 Seja bem-vindo ao atendimento acadêmico.\n\n"
+
         "Posso te ajudar a identificar o caminho mais adequado "
         "para resolver sua solicitação.\n\n"
+
         "Você pode perguntar sobre:\n\n"
+
         "🎓 Matrícula\n"
         "📝 Notas\n"
         "🕐 Horários\n"
@@ -769,6 +851,7 @@ def responder_saudacao():
         "💻 Acesso ao sistema\n"
         "❌ Cancelamento\n"
         "📢 Reclamações\n\n"
+
         "Pode escrever sua dúvida do jeito que você falaria "
         "com um atendente."
     )
@@ -783,13 +866,16 @@ def responder_continuacao(categoria):
     dados = solucoes[categoria]
 
     resposta = (
+
         f"Claro! 👍 Como estamos falando sobre **{categoria}**, "
         f"vou continuar te orientando por esse caminho.\n\n"
+
     )
 
     resposta += dados["resposta"] + "\n\n"
 
     resposta += "🛠️ **Caminho recomendado:**\n\n"
+
 
     for i, passo in enumerate(
         dados["passos"],
@@ -798,19 +884,62 @@ def responder_continuacao(categoria):
 
         resposta += f"**{i}.** {passo}\n\n"
 
+
     resposta += (
+
         f"🏢 **Setor responsável:** {setores[categoria]}\n\n"
+
         f"📋 **Informações que podem ser necessárias:** "
         f"{dados['documentos']}\n\n"
+
     )
+
 
     resposta += (
-        "💬 Se alguma dessas etapas não funcionar, "
-        "me explique o que aconteceu e vou tentar indicar "
-        "o próximo caminho."
+
+        "💬 Se você já tentou essas orientações e "
+        "o problema não foi resolvido, me diga o que aconteceu.\n\n"
+
+        "👨‍💼 Caso continue sem solução, recomendo procurar "
+        "o atendimento humano da instituição para uma análise individual."
     )
 
+
     return resposta
+
+
+# ============================================================
+# NOVA RESPOSTA - SOLUÇÃO NÃO FUNCIONOU
+# ============================================================
+
+def responder_solucao_nao_funcionou():
+
+    return (
+
+        "😕 Entendi. Se você já tentou as orientações que passei "
+        "e **o problema continua**, provavelmente é uma situação "
+        "que precisa ser analisada individualmente.\n\n"
+
+        "💡 Para não ficar repetindo as mesmas orientações, "
+        "o melhor caminho agora é procurar o atendimento humano "
+        "da instituição.\n\n"
+
+        "👨‍💼 **Recomendo entrar em contato com um atendente.**\n\n"
+
+        "O atendente poderá analisar seu caso diretamente, "
+        "verificar seus dados e indicar o procedimento correto.\n\n"
+
+        "📋 Ao entrar em contato, se possível, informe:\n\n"
+
+        "• Seu nome e matrícula;\n"
+        "• Curso e período;\n"
+        "• O que aconteceu;\n"
+        "• O que você já tentou fazer;\n"
+        "• Qual mensagem de erro apareceu, se houver;\n"
+        "• Protocolos ou comprovantes relacionados ao problema.\n\n"
+
+        "⚠️ **Nunca informe sua senha ou códigos de acesso.**"
+    )
 
 
 # ============================================================
@@ -820,17 +949,23 @@ def responder_continuacao(categoria):
 def responder_humano():
 
     return (
+
         "👨‍💼 **Claro. Nesse caso, o melhor caminho é o atendimento humano.**\n\n"
+
         "O assistente virtual consegue fornecer orientações iniciais, "
         "mas algumas situações precisam ser analisadas individualmente "
         "por um funcionário da instituição.\n\n"
+
         "📋 Recomendo informar ao atendente:\n\n"
+
         "• Seu nome e matrícula;\n"
         "• O curso e período;\n"
         "• O que aconteceu;\n"
         "• Quando o problema ocorreu;\n"
         "• Protocolos ou comprovantes, se houver.\n\n"
+
         "⚠️ Nunca informe sua senha ou códigos de acesso.\n\n"
+
         "Se quiser, também posso tentar identificar primeiro "
         "qual setor deve receber sua solicitação."
     )
@@ -843,17 +978,26 @@ def responder_humano():
 def responder_nao_entendi():
 
     return (
-        "🤔 Quero te ajudar, mas ainda não consegui identificar "
-        "com segurança qual é o seu problema.\n\n"
+
+        "🤔 **Quero te ajudar, mas ainda não consegui identificar "
+        "com segurança qual é o seu problema.**\n\n"
+
         "Tente me explicar um pouco mais, por exemplo:\n\n"
+
         "• O que aconteceu?\n"
         "• Qual sistema ou serviço você está tentando utilizar?\n"
         "• O que você precisa resolver?\n"
         "• Apareceu alguma mensagem de erro?\n\n"
-        "Se você me passar mais detalhes, posso tentar identificar "
-        "o setor e o melhor caminho.\n\n"
-        "Se a situação for muito específica ou não puder ser "
-        "identificada pelo sistema, vou recomendar o atendimento humano."
+
+        "💡 Se você já tentou as orientações anteriores e "
+        "**elas não resolveram o problema**, não precisa ficar "
+        "tentando por aqui.\n\n"
+
+        "👨‍💼 **Nesse caso, recomendo entrar em contato com "
+        "o atendimento humano da instituição.**\n\n"
+
+        "Um atendente poderá analisar sua situação individualmente "
+        "e orientar você sobre o procedimento correto."
     )
 
 
@@ -867,6 +1011,7 @@ if "mensagens_chat" not in st.session_state:
 
         {
             "role": "assistant",
+
             "content":
                 "Olá! 👋 Sou o assistente acadêmico. "
                 "Como posso ajudar? Você pode escrever sua dúvida "
@@ -926,6 +1071,7 @@ if mensagem:
         }
     )
 
+
     with st.chat_message("user"):
 
         st.write(mensagem)
@@ -942,6 +1088,7 @@ if mensagem:
 
     quer_humano = False
 
+
     for palavra in palavras_pedir_humano:
 
         palavra_normalizada = normalizar_texto(
@@ -951,6 +1098,7 @@ if mensagem:
         if palavra_normalizada in mensagem_normalizada:
 
             quer_humano = True
+
             break
 
 
@@ -958,9 +1106,11 @@ if mensagem:
 
         resposta_chat = responder_humano()
 
+
         with st.chat_message("assistant"):
 
             st.write(resposta_chat)
+
 
         st.session_state.mensagens_chat.append(
             {
@@ -969,20 +1119,54 @@ if mensagem:
             }
         )
 
+
         st.stop()
 
 
     # ========================================================
-    # 2 - SAUDAÇÃO
+    # 2 - VERIFICAR SE A SOLUÇÃO ANTERIOR NÃO FUNCIONOU
+    # ========================================================
+
+    if eh_problema_nao_resolvido(mensagem):
+
+        resposta_chat = responder_solucao_nao_funcionou()
+
+
+        with st.chat_message("assistant"):
+
+            st.write(resposta_chat)
+
+
+            st.error(
+                "👨‍💼 **Atendimento humano recomendado:** "
+                "o problema continua mesmo após as tentativas."
+            )
+
+
+        st.session_state.mensagens_chat.append(
+            {
+                "role": "assistant",
+                "content": resposta_chat
+            }
+        )
+
+
+        st.stop()
+
+
+    # ========================================================
+    # 3 - SAUDAÇÃO
     # ========================================================
 
     if eh_saudacao(mensagem):
 
         resposta_chat = responder_saudacao()
 
+
         with st.chat_message("assistant"):
 
             st.write(resposta_chat)
+
 
         st.session_state.mensagens_chat.append(
             {
@@ -991,40 +1175,12 @@ if mensagem:
             }
         )
 
-        st.stop()
-
-
-    # ========================================================
-    # 3 - CONTINUAÇÃO DA CONVERSA
-    # ========================================================
-
-    if (
-        st.session_state.ultima_categoria is not None
-        and eh_continuacao(mensagem)
-    ):
-
-        categoria = st.session_state.ultima_categoria
-
-        resposta_chat = responder_continuacao(
-            categoria
-        )
-
-        with st.chat_message("assistant"):
-
-            st.write(resposta_chat)
-
-        st.session_state.mensagens_chat.append(
-            {
-                "role": "assistant",
-                "content": resposta_chat
-            }
-        )
 
         st.stop()
 
 
     # ========================================================
-    # 4 - PALAVRAS-CHAVE
+    # 4 - ENCONTRAR CATEGORIA POR PALAVRAS-CHAVE
     # ========================================================
 
     categoria_por_palavra = encontrar_categoria_por_palavras(
@@ -1033,7 +1189,45 @@ if mensagem:
 
 
     # ========================================================
-    # 5 - CLASSIFICAÇÃO DO MODELO
+    # 5 - CONTINUAÇÃO DA CONVERSA
+    # ========================================================
+
+    if (
+
+        st.session_state.ultima_categoria is not None
+
+        and categoria_por_palavra is None
+
+        and eh_continuacao(mensagem)
+
+    ):
+
+        categoria = st.session_state.ultima_categoria
+
+
+        resposta_chat = responder_continuacao(
+            categoria
+        )
+
+
+        with st.chat_message("assistant"):
+
+            st.write(resposta_chat)
+
+
+        st.session_state.mensagens_chat.append(
+            {
+                "role": "assistant",
+                "content": resposta_chat
+            }
+        )
+
+
+        st.stop()
+
+
+    # ========================================================
+    # 6 - CLASSIFICAÇÃO DO MODELO
     # ========================================================
 
     mensagem_transformada = vectorizador.transform(
@@ -1051,18 +1245,19 @@ if mensagem:
     )[0]
 
 
-    confianca_modelo = max(probabilidades)
+    confianca_modelo = max(
+        probabilidades
+    )
 
 
     # ========================================================
-    # 6 - ESCOLHER MELHOR CLASSIFICAÇÃO
+    # 7 - ESCOLHER MELHOR CLASSIFICAÇÃO
     # ========================================================
 
     if categoria_por_palavra is not None:
 
         categoria = categoria_por_palavra
 
-        # Palavra-chave direta aumenta a confiança
         confianca = max(
             confianca_modelo,
             0.85
@@ -1076,24 +1271,30 @@ if mensagem:
 
 
     # ========================================================
-    # 7 - SE NÃO HOUVER SEGURANÇA
+    # 8 - SE NÃO HOUVER SEGURANÇA
     # ========================================================
 
     if (
+
         categoria_por_palavra is None
+
         and confianca < 0.55
+
     ):
 
         resposta_chat = responder_nao_entendi()
+
 
         with st.chat_message("assistant"):
 
             st.write(resposta_chat)
 
+
             st.error(
-                "👨‍💼 Se o problema não puder ser identificado, "
-                "procure um atendente da instituição."
+                "👨‍💼 **Se o problema continuar sem solução, "
+                "procure um atendente da instituição.**"
             )
+
 
         st.session_state.mensagens_chat.append(
             {
@@ -1102,18 +1303,19 @@ if mensagem:
             }
         )
 
+
         st.stop()
 
 
     # ========================================================
-    # 8 - SALVAR MEMÓRIA
+    # 9 - SALVAR MEMÓRIA
     # ========================================================
 
     st.session_state.ultima_categoria = categoria
 
 
     # ========================================================
-    # 9 - SETOR E SOLUÇÃO
+    # 10 - SETOR E SOLUÇÃO
     # ========================================================
 
     setor = setores[categoria]
@@ -1122,10 +1324,11 @@ if mensagem:
 
 
     # ========================================================
-    # 10 - DETECTAR NECESSIDADE DE HUMANO
+    # 11 - DETECTAR NECESSIDADE DE HUMANO
     # ========================================================
 
     precisa_humano = False
+
 
     for palavra in palavras_humano:
 
@@ -1136,19 +1339,22 @@ if mensagem:
         if palavra_normalizada in mensagem_normalizada:
 
             precisa_humano = True
+
             break
 
 
     if categoria in [
+
         "Reclamação",
         "Cancelamento"
+
     ]:
 
         precisa_humano = True
 
 
     # ========================================================
-    # 11 - RESPOSTA DO ASSISTENTE
+    # 12 - RESPOSTA DO ASSISTENTE
     # ========================================================
 
     with st.chat_message("assistant"):
@@ -1156,6 +1362,7 @@ if mensagem:
         st.write(
             dados_solucao["resposta"]
         )
+
 
         st.divider()
 
@@ -1187,6 +1394,7 @@ if mensagem:
             f"{confianca * 100:.1f}%"
         )
 
+
         st.progress(
             float(confianca)
         )
@@ -1202,8 +1410,11 @@ if mensagem:
 
 
         for i, passo in enumerate(
+
             dados_solucao["passos"],
+
             start=1
+
         ):
 
             st.write(
@@ -1218,6 +1429,7 @@ if mensagem:
         st.subheader(
             "📋 Informações que podem ser necessárias"
         )
+
 
         st.info(
             dados_solucao["documentos"]
@@ -1234,9 +1446,11 @@ if mensagem:
                 "👨‍💼 **Atendimento humano recomendado**"
             )
 
+
             st.write(
                 dados_solucao["humano"]
             )
+
 
             st.warning(
                 "⚠️ O assistente virtual fornece uma orientação "
@@ -1268,11 +1482,16 @@ if mensagem:
     # ========================================================
 
     resumo_resposta = (
+
         f"Categoria: {categoria}\n\n"
+
         f"Setor: {setor}\n\n"
+
         f"Confiança: {confianca * 100:.1f}%\n\n"
+
         f"Atendimento humano: "
         f"{'Sim' if precisa_humano else 'Não'}"
+
     )
 
 
@@ -1292,14 +1511,18 @@ with st.sidebar:
 
     st.header("🎓 Sobre o sistema")
 
+
     st.write(
         "Sistema de classificação automática de "
         "solicitações acadêmicas."
     )
 
+
     st.divider()
 
+
     st.subheader("📌 Categorias")
+
 
     for categoria_nome in setores:
 
@@ -1307,7 +1530,9 @@ with st.sidebar:
             f"• {categoria_nome}"
         )
 
+
     st.divider()
+
 
     st.caption(
         "Projeto acadêmico — Sistema de Informações Acadêmicas"
@@ -1326,6 +1551,7 @@ if st.sidebar.button(
 
         {
             "role": "assistant",
+
             "content":
                 "Olá! 👋 Sou o assistente acadêmico. "
                 "Como posso ajudar?"
@@ -1333,6 +1559,8 @@ if st.sidebar.button(
 
     ]
 
+
     st.session_state.ultima_categoria = None
+
 
     st.rerun()
